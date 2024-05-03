@@ -1,0 +1,11 @@
+.App {
+  max-width: 1024px;
+  margin: 0 auto;
+  
+}
+
+.blog-post-wrapper {
+  background-color: #e5e5e5;
+  padding: 20px;
+  margin-top: 20px;
+}
