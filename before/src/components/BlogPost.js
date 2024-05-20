@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import CommentItems from './CommentItems';
 
 export default function BlogPost({ postId }) {
   const [post, setPost] = useState(null);
@@ -17,7 +18,7 @@ export default function BlogPost({ postId }) {
 
   useEffect(() => {
     async function fetchComments() {
-      const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
+      const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments?_limit=2`);
       setComments(response.data);
     }
 
@@ -43,13 +44,14 @@ export default function BlogPost({ postId }) {
       <section className='post-detail'>
         <h2>{post.title}</h2>
         <p>{post.body}</p>
+        <a href='#'>Read More</a>
       </section>
 
       <section className='comment-section'>
-        <h3>Comments</h3>
+        <h3>Recent Comments</h3>
         <ul>
           {comments.map((comment) => (
-            comment?.body && <li key={comment.id}>{comment.body}</li>
+            comment?.body && <CommentItems key={comment.id} comment={comment} />
           ))}
         </ul>
       </section>

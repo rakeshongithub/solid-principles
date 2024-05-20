@@ -6,16 +6,20 @@ const POST_ID = [1,2,3,4]
 function App() {
   return (
     <>
-    <header>
-      <h1>Empowering Experience Engineers with SOLID Principles</h1>
-    </header>
-    <main className="App main-wrapper">
-      
-      {
-        POST_ID.map(postId => <BlogPost key={postId} postId={postId} />)
-      }
-    </main>
-    <footer>Copyright @2024</footer>
+      {/* Header */}
+      <header>
+        <h1>Empowering Experience Engineers with SOLID Principles</h1>
+      </header>
+
+      {/* Body */}
+      <main className="App main-wrapper">
+        {
+          POST_ID.map(postId => <BlogPost key={postId} postId={postId} />)
+        }
+      </main>
+
+      {/* Footer */}
+      <footer>Copyright @2024</footer>
     </>
   );
 }
