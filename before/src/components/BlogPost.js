@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CommentItems from './CommentItems';
+import PostImage from './PostImage';
 
 export default function BlogPost({ postId }) {
   const [post, setPost] = useState(null);
@@ -41,6 +42,7 @@ export default function BlogPost({ postId }) {
 
   return (
     <div className='blog-post-wrapper'>
+      <PostImage />
       <section className='post-detail'>
         <h2>{post.title}</h2>
         <p>{post.body}</p>
