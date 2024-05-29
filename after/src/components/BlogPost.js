@@ -1,16 +1,13 @@
-import React from 'react';
-import PostDetail from './PostDetail';
-import AddComment from './AddComment';
-import CommentListWithHoc from './CommentListWithHoc';
-import PostDetailWithHoc from './PostDetailWithHoc';
+import React from "react";
+import AddComment from "./AddComment";
+import CommentList from "./CommentList";
+import PostDetailWithBanner from "./PostDetailWithBanner";
 
 export default function BlogPost({ postId }) {
-
   return (
-    <div className='blog-post-wrapper'>
-      {/* <PostDetail postId={postId} /> */}
-      <PostDetailWithHoc postId={postId} />
-      <CommentListWithHoc postId={postId} />
+    <div className="blog-post-wrapper">
+      <PostDetailWithBanner postId={postId} />
+      <CommentList postId={postId} />
       <AddComment postId={postId} />
     </div>
   );
