@@ -1,23 +1,18 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+import useCommentList from "../hooks/useCommentList";
 import Loading from "./Loading";
 import CommentItems from "./CommentItems";
 
 function CommentList({ postId }) {
-  const [comments, setComments] = useState([]);
+  const { comments, error, loading } = useCommentList(postId);
 
-  useEffect(() => {
-    async function fetchComments() {
-      const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/posts/${postId}/comments?_limit=2`
-      );
-      setComments(response.data);
-    }
+  if (loading) {
+    return <Loading>Comments loading...</Loading>;
+  }
 
-    fetchComments();
-  }, [postId]);
-
-  if (!comments?.length) return <Loading>Comments loading...</Loading>;
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <section className="comment-section">

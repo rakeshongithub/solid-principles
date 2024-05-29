@@ -1,28 +1,24 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios';
-import Loading from './Loading';
+import React from "react";
+import usePost from "../hooks/usePost";
+import Loading from "./Loading";
 
-function PostDetail({postId}) {
-  const [post, setPost] = useState(null);
+function PostDetail({ postId }) {
+  const { post, loading, error } = usePost(postId);
+  if (loading) {
+    return <Loading>Post detail loading...</Loading>;
+  }
 
-  useEffect(() => {
-        async function fetchPost() {
-          const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
-          setPost(response.data);
-        }
-    
-        fetchPost();
-    }, [postId]);
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
-  if (!post) return <Loading>Post detail loading...</Loading>;
-      
   return (
-    <section className='post-detail'>
-        <h2>{post.title}</h2>
-        <p>{post.body}</p>
-        <a href='#'>Read More</a>
+    <section className="post-detail">
+      <h2>{post.title}</h2>
+      <p>{post.body}</p>
+      <a href="#">Read More</a>
     </section>
-  )
+  );
 }
 
-export default PostDetail
+export default PostDetail;
