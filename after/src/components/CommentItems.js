@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function CommentItems({comment}) {
+function CommentItems({ body, email }) {
   return (
-    <li className='comment-items'>{comment.body} - <span className='comment-email'>by {comment.email}</span></li>
-  )
+    <li className="comment-items">
+      {body} - <span className="comment-email">by {email}</span>
+    </li>
+  );
 }
 
-export default CommentItems
+export default CommentItems;
