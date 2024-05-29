@@ -22,7 +22,7 @@ function CommentList({ postId }) {
           // const {postId, id, name, email, body } = comment
           <CommentItems
             key={comment?.id}
-            comment={comment.body}
+            body={comment.body}
             email={comment.email}
           />
         ))}
