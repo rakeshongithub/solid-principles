@@ -21,14 +21,14 @@ function AddComment({ postId }) {
   return (
     <form className="form-section" onSubmit={handleCommentSubmit}>
       <input type="text" value={newComment} onChange={handleCommentChange} />
-      <Button type="submit" disabled={isLoading}>
+      {/* <Button type="submit" disabled={isLoading}>
         {isLoading ? "adding comment in-progress..." : "Add Comment"}
-      </Button>
-      {/* <ButtonWithLoader
+      </Button> */}
+      <ButtonWithLoader
         type="submit"
         disabled={isLoading}
         isLoading={isLoading}
-      ></ButtonWithLoader> */}
+      ></ButtonWithLoader>
     </form>
   );
 }
